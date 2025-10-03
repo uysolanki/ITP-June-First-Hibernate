@@ -11,7 +11,7 @@ import com.itp.ITPJuneFirstHibernate.model.Student;
  * Hello world!
  *
  */
-public class App 
+public class LoadDemo 
 {
     public static void main( String[] args )
     {
@@ -23,16 +23,19 @@ public class App
     	
     	Session session=factory.openSession();
     	
-    	Transaction tx=session.beginTransaction();
+    	Student s1=session.load(Student.class, 1);		//proxy rno : 5 , sname : null, per 0.0	
+   
     	
-    	Student s1=new Student("Abhishek",78.5);   //object
-    	session.save(s1);						   //create 
+    	System.out.println("Hi!!!!");
+    	System.out.println(s1.getRno());
     	
-    	Student s2=new Student("Tilak",88.5);     //object
-    	session.save(s2);
-    	tx.commit();
-    	System.out.println("record inserted");
+    	System.out.println("Bye!!!!");
     	
+    	System.out.println(s1.getSname());		//query select
+    											//Surya
+    
+    	Student s2=session.load(Student.class, 1);
+    	System.out.println(s2.getSname());
     	session.close();
     	factory.close();
 

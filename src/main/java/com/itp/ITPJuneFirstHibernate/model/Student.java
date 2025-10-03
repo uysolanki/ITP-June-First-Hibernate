@@ -1,16 +1,36 @@
 package com.itp.ITPJuneFirstHibernate.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.transaction.TransactionScoped;
+
+import org.hibernate.annotations.CollectionId;
 
 @Entity
+@Table(name="MyStudent")
 public class Student {
 
 	@Id
+	@Column(name="rollno")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int rno;
 	private String sname;
 	private double per;
+	
+	@Transient
+	int temp;
+	
 	public Student() {}
+	
+	public Student(String sname, double per) {
+		this.sname = sname;
+		this.per = per;
+	}
 	public Student(int rno, String sname, double per) {
 		this.rno = rno;
 		this.sname = sname;
