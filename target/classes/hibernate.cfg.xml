@@ -14,5 +14,8 @@
 	<property name="format_sql">true</property>
 	
 	<mapping class="com.itp.ITPJuneFirstHibernate.model.Student"/>
+	<mapping class="com.itp.ITPJuneFirstHibernate.model.State"/>
+	<mapping class="com.itp.ITPJuneFirstHibernate.model.ChiefMinister"/>
+	
 </session-factory>
 </hibernate-configuration>
