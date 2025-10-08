@@ -11,7 +11,7 @@ import com.itp.ITPJuneFirstHibernate.model.Student;
  * Hello world!
  *
  */
-public class App 
+public class SecondLevelCacheDemo 
 {
     public static void main( String[] args )
     {
@@ -22,16 +22,18 @@ public class App
     	System.out.println(factory.isClosed());
     	
     	Session session=factory.openSession();
+    	Session session1=factory.openSession();
     	
-    	Transaction tx=session.beginTransaction();
+    	Student s1=session.get(Student.class, 1);  //query yes
+    	System.out.println(s1);
     	
-    	Student s1=new Student("Abhishek",78.5);   //object
-    	session.save(s1);						   //create 
+    	System.out.println("Hi!!!!");
     	
-    	Student s2=new Student("Tilak",88.5);     //object
-    	session.save(s2);    	tx.commit();
-    	System.out.println("record inserted");
+    	Student s2=session1.get(Student.class, 1);	//query yes
+    	System.out.println(s2);
     	
+    	
+    	System.out.println(s1==s2);
     	session.close();
     	factory.close();
 
